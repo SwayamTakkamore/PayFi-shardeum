@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/wallet_provider.dart';
 import '../utils/theme.dart';
+import 'home_screen.dart';
 
 class WalletSetupScreen extends StatefulWidget {
   const WalletSetupScreen({super.key});
@@ -187,6 +188,13 @@ class _WalletSetupScreenState extends State<WalletSetupScreen> {
                                       backgroundColor: AppColors.success,
                                     ),
                                   );
+                                  // Navigate back to home screen
+                                  if (mounted) {
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                                      (route) => false,
+                                    );
+                                  }
                                 }
                               },
                         child: walletProvider.isLoading
@@ -361,7 +369,13 @@ class _WalletSetupScreenState extends State<WalletSetupScreen> {
                                       backgroundColor: AppColors.success,
                                     ),
                                   );
-                                  Navigator.of(context).pop();
+                                  // Navigate back to home screen
+                                  if (mounted) {
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                                      (route) => false,
+                                    );
+                                  }
                                 }
                               } catch (_) {}
                             },
